@@ -11,3 +11,7 @@ $ac = new ActiveCampaign(ACTIVECAMPAIGN_URL, ACTIVECAMPAIGN_API_KEY);
 $ac->set_curl_timeout(10);
 
 $account = $ac->api("account/view");
+
+echo "<pre>";
+print_r($account);
+echo "</pre>";
