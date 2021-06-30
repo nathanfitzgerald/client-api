@@ -51,8 +51,8 @@ else {
 		"tag" => $tag_id
 	);
 
-	$ac->api("contact/tag_add", $tagData);
+	$tagResponse = $ac->api("contact/tag_add", $tagData);
 }
 
 http_response_code(200);
-echo json_encode(array("status" => 'OK', "code" => 1, "payload" => array($data, $response)));
+echo json_encode(array("status" => 'OK', "code" => 1, "payload" => array($data, $response, $tagResponse)));
