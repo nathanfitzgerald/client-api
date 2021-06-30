@@ -24,7 +24,7 @@ $list_id = 1;
 $contact = array(
 	"email"              => "nsfitzgerald@gmail.com",
 	"first_name"         => "Nathan",
-	"last_name"          => "Fitzgerald",
+	"last_name"          => "Fitzgerald Testing",
 	"p[{$list_id}]"      => $list_id,
 	"status[{$list_id}]" => 1, // "Active" status
 );
