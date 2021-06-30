@@ -19,11 +19,13 @@ else {
 // Adjust the default cURL timeout
 $ac->set_curl_timeout(10);
 
+$list_id = 1;
+
 $contact = array(
 	"email"              => "nsfitzgerald@gmail.com",
 	"first_name"         => "Nathan",
 	"last_name"          => "Fitzgerald",
-	"p[{$list_id}]"      => 1,
+	"p[{$list_id}]"      => $list_id,
 	"status[{$list_id}]" => 1, // "Active" status
 );
 
