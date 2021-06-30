@@ -47,7 +47,7 @@ else {
 	$tag_id = 16;
 
 	$tagData = array(
-		"contact" => $contact_id,
+		"contact" => (int)$contact_id,
 		"tag" => $tag_id
 	);
 
