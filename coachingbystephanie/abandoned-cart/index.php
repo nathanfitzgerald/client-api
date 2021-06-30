@@ -21,14 +21,13 @@ else {
 // Adjust the default cURL timeout
 $ac->set_curl_timeout(10);
 
-// add to customer list
-$list_id = 2;
+// add to main list
+$list_id = 1;
 
 // contact data
 $contact = array(
 	"email"              => $data['email'],
 	"first_name"         => $data['first_name'],
-	"last_name"          => $data['last_name'],
 	"p[{$list_id}]"      => $list_id,
 	"status[{$list_id}]" => 1, // "Active" status
 );
@@ -43,6 +42,16 @@ else {
 	// successful request
 	$contact_id = (int)$contact_sync->subscriber_id;
 	$response = "Contact synced successfully (ID {$contact_id})!";
+
+	// tag contact
+	$tag_id = 16;
+
+	$tagData = array(
+		"contact" => $contact_id,
+		"tag" => $tag_id
+	);
+
+	$ac->api("contact/tag_add", $tagData);
 }
 
 http_response_code(200);
