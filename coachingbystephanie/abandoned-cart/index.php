@@ -24,7 +24,7 @@ $ac->set_curl_timeout(10);
 $contact = array(
 	"email"              => "nsfitzgerald@gmail.com",
 	"first_name"         => "Nathan",
-	"last_name"          => "Fitzgerald" . $data->email,
+	"last_name"          => "Fitzgerald",
 	"p[{$list_id}]"      => 1,
 	"status[{$list_id}]" => 1, // "Active" status
 );
