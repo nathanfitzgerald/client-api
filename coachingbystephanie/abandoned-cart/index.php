@@ -47,8 +47,8 @@ else {
 	$tag_id = 16;
 
 	$tagData = array(
-		"contact" => (int)$contact_id,
-		"tag" => $tag_id
+		"contact" => "$contact_id",
+		"tag" => "$tag_id"
 	);
 
 	$tagResponse = $ac->api("contact/tag_add", $tagData);
