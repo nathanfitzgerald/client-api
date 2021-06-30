@@ -24,7 +24,7 @@ $ac->set_curl_timeout(10);
 $contact = array(
 	"email"              => "nsfitzgerald@gmail.com",
 	"first_name"         => "Nathan",
-	"last_name"          => "Fitzgerald",
+	"last_name"          => "Fitzgerald" . $data['email'],
 	"p[{$list_id}]"      => 1,
 	"status[{$list_id}]" => 1, // "Active" status
 );
@@ -33,13 +33,13 @@ $contact_sync = $ac->api("contact/sync", $contact);
 
 if (!(int)$contact_sync->success) {
 	// request failed
-	$response =  "Syncing contact failed. Error returned: " . $contact_sync->error;
+	$response = array("message" => "Syncing contact failed. Error returned: " . $contact_sync->error);
 }
 
 else {
 	// successful request
 	$contact_id = (int)$contact_sync->subscriber_id;
-	$response = "Contact synced successfully (ID {$contact_id})!";	
+	$response = array("message" => "Contact synced successfully (ID {$contact_id})!");
 }
 
 echo json_encode(array('status' => 'OK', 'code' => 1, 'payload' => array_merge($data, $response)));
