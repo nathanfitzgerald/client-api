@@ -38,7 +38,6 @@ $contact_sync = $ac->api("contact/sync", $contact);
 if (!(int)$contact_sync->success) {
 	// request failed
 	$response = "Syncing contact failed. Error returned: " . $contact_sync->error;
-	exit();
 }
 else {
 	// successful request
@@ -47,4 +46,4 @@ else {
 }
 
 http_response_code(200);
-echo json_encode(array("status" => 'OK', "code" => 1, "payload" => array($data, $response));
+echo json_encode(array("status" => 'OK', "code" => 1, "payload" => array($data, $response)));
