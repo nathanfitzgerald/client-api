@@ -2,10 +2,16 @@
 
 date_default_timezone_set('UTC');
 
-header('HTTP/1.1 200 OK');
 header('Content-Type: application/json');
 
-echo '{ "time": "' . date('Y-m-d H:m:s') . ' UTC" }';
+if ($json = json_decode(file_get_contents("php://input"), true)) {
+	$data = $json;
+}
+else {
+	$data = $_POST;
+}
+
+http_response_code(200);
 
 define("ACTIVECAMPAIGN_URL", "https://coachingbystephanie.api-us1.com");
 define("ACTIVECAMPAIGN_API_KEY", "fced1b3f5c04f685abbf06da03622f73ddcbd97a1b8ee38bf6905fa37fd67c5c909119e6");
@@ -18,7 +24,7 @@ $ac->set_curl_timeout(10);
 $contact = array(
 	"email"              => "nsfitzgerald@gmail.com",
 	"first_name"         => "Nathan",
-	"last_name"          => "Fitzgerald",
+	"last_name"          => "Fitzgerald" . $data['email'],
 	"p[{$list_id}]"      => 1,
 	"status[{$list_id}]" => 1, // "Active" status
 );
@@ -27,10 +33,13 @@ $contact_sync = $ac->api("contact/sync", $contact);
 
 if (!(int)$contact_sync->success) {
 	// request failed
-	echo "<p>Syncing contact failed. Error returned: " . $contact_sync->error . "</p>";
-	exit();
+	$response =  "Syncing contact failed. Error returned: " . $contact_sync->error;
 }
-    
-// successful request
-$contact_id = (int)$contact_sync->subscriber_id;
-echo "<p>Contact synced successfully (ID {$contact_id})!</p>";
+
+else {
+	// successful request
+	$contact_id = (int)$contact_sync->subscriber_id;
+	$response = "Contact synced successfully (ID {$contact_id})!";	
+}
+
+echo json_encode(array('status' => 'OK', 'code' => 1, 'payload' => array_merge($data, $response)));
