@@ -7,7 +7,7 @@ $ac = new ActiveCampaign(ACTIVECAMPAIGN_URL, ACTIVECAMPAIGN_API_KEY);
 
 date_default_timezone_set('UTC');
 
-header('Content-Type: application/json');
+//header('Content-Type: application/json');
 
 
 
