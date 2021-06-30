@@ -16,5 +16,17 @@ else {
 	$data = $_POST;
 }
 
-http_response_code(200);
+// Adjust the default cURL timeout
+$ac->set_curl_timeout(10);
 
+$contact = array(
+	"email"              => "nsfitzgerald@gmail.com",
+	"first_name"         => "Nathan",
+	"last_name"          => "Fitzgerald",
+	"p[{$list_id}]"      => 1,
+	"status[{$list_id}]" => 1, // "Active" status
+);
+
+$contact_sync = $ac->api("contact/sync", $contact);
+
+http_response_code(200);
