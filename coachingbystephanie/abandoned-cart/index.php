@@ -43,6 +43,7 @@ else {
 	$contact_id = (int)$contact_sync->subscriber_id;
 	$response = "Contact synced successfully (ID {$contact_id})!";
 
+	// pause for 1 second
 	sleep(1);
 
 	// tag contact
