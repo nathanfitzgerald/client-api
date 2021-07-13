@@ -11,11 +11,8 @@ $ac = new ActiveCampaign(ACTIVECAMPAIGN_URL, ACTIVECAMPAIGN_API_KEY);
 // Adjust the default cURL timeout
 $ac->set_curl_timeout(10);
 
-// add to main list
-$list_id = 1;
-
 $tagData = array(
-	"contact" => "933",
+	"contact" => "1045",
 	"tag" => "16"
 );
 
