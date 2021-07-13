@@ -12,7 +12,7 @@ $ac = new ActiveCampaign(ACTIVECAMPAIGN_URL, ACTIVECAMPAIGN_API_KEY);
 $ac->set_curl_timeout(10);
 
 $tagData = array(
-	"contact" => "1045",
+	"contact" => "933",
 	"tag" => "16"
 );
 
