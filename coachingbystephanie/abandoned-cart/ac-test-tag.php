@@ -19,4 +19,5 @@ $tagData = array(
 $tagResponse = $ac->api("contact/tag_add", $tagData);
 
 echo '<pre>';
+print_r($tagData);
 print_r($tagResponse);
