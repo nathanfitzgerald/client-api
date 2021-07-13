@@ -44,7 +44,7 @@ else {
 	$response = "Contact synced successfully (ID {$contact_id})!";
 
 	// pause for 1 second
-	sleep(1);
+	sleep(5);
 
 	// tag contact
 	$tag_id = 16;
