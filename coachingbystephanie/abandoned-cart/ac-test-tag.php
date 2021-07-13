@@ -17,7 +17,7 @@ $list_id = 1;
 $tagData = array(
 	"contact" => "933",
 	"tag" => "16"
-)
+);
 
 $tagResponse = $ac->api("contact/tag_add", $tagData);
 
